@@ -1,0 +1,54 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: "70.x"
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  values:
+    prometheus:
+      prometheusSpec:
+        retention: 15d
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+    alertmanager:
+      alertmanagerSpec:
+        resources:
+          requests:
+            cpu: 25m
+            memory: 64Mi
+    grafana:
+      enabled: true
+      resources:
+        requests:
+          cpu: 50m
+          memory: 128Mi
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - grafana.lab
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt
+        tls:
+          - secretName: grafana-tls
+            hosts:
+              - grafana.lab
