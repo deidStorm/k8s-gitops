@@ -45,10 +45,10 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - grafana.lab
+          - $GRAFANA_HOST
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt
         tls:
           - secretName: grafana-tls
             hosts:
-              - grafana.lab
+              - $GRAFANA_HOST
