@@ -7,6 +7,7 @@ spec:
   interval: 30m
   path: ./infrastructure/overlays/staging/sources
   prune: true
+  timeout: 10m
   sourceRef:
     kind: GitRepository
     name: flux-system

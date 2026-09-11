@@ -8,7 +8,7 @@ spec:
   path: ./infrastructure/overlays/staging/controllers
   prune: true
   wait: true
-  timeout: 5m
+  timeout: 10m
   sourceRef:
     kind: GitRepository
     name: flux-system
