@@ -7,7 +7,7 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: hashicorp-vault
+      chart: vault
       version: "0.34.1"
       sourceRef:
         kind: HelmRepository
