@@ -21,3 +21,28 @@ spec:
     crds: CreateReplace
     remediation:
       retries: 3
+  values:
+    server:
+      dataStorage:
+        enabled: true
+        size: 10Gi
+        storageClass: local-path
+      service:
+        type: LoadBalancer
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt
+        hosts:
+          - host: ${VAULT_HOST}
+            paths:
+              - /
+        tls:
+          - secretName: vault-tls
+            hosts:
+              - ${VAULT_HOST}
+    ui:
+      enabled: true
+      service:
+        type: LoadBalancer
