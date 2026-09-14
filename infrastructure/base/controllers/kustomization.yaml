@@ -6,3 +6,4 @@ resources:
   - ingress-nginx
   - metallb
   - local-path-provisioner
+  - hashicorp-vault
