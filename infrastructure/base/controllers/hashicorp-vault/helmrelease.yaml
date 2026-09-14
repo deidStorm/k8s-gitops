@@ -42,7 +42,3 @@ spec:
           - secretName: vault-tls
             hosts:
               - ${VAULT_HOST}
-    ui:
-      enabled: true
-      service:
-        type: LoadBalancer
