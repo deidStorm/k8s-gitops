@@ -23,5 +23,5 @@ kind: Secret
 metadata:
   name: vault-token
   namespace: external-secrets
-data:
+stringData:
   token: ${VAULT_ROOT_TOKEN}
