@@ -6,7 +6,7 @@ metadata:
 spec:
   provider:
     vault:
-      server: "https://${VAULT_HOST}"
+      server: "http://${VAULT_HOST}"
       path: ${VAULT_SECRET_PATH}
       # Version is the Vault KV secret engine version.
       # This can be either "v1" or "v2", defaults to "v2"
