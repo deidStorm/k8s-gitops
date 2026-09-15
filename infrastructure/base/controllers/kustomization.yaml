@@ -7,3 +7,4 @@ resources:
   - metallb
   - local-path-provisioner
   - hashicorp-vault
+  - external-secrets
