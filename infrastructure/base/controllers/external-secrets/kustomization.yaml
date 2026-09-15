@@ -1,6 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - cluster-issuer.yaml
-  - metallb-IP-L2.yaml
-  - eso-vault-backend.yaml
+  - namespace.yaml
+  - helmrelease.yaml
