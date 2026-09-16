@@ -12,16 +12,8 @@ spec:
       # This can be either "v1" or "v2", defaults to "v2"
       version: "v2"
       auth:
-        # points to a secret that contains a vault token
-        # https://www.vaultproject.io/docs/auth/token
-        tokenSecretRef:
-          name: "vault-token"
-          key: "token"
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: vault-token
-  namespace: external-secrets
-stringData:
-  token: ${VAULT_ROOT_TOKEN}
+        kubernetes:
+          mountPath: "kubernetes"
+          role: "eso-role"
+          serviceAccountRef:
+            name: "external-secrets"
