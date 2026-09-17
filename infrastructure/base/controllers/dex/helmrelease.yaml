@@ -21,3 +21,34 @@ spec:
     crds: CreateReplace
     remediation:
       retries: 3
+  values:
+    replicaCount: 2
+
+    serviceAccount:
+      create: true
+      name: dex
+
+    configSecret:
+      create: false
+      name: dex-config
+
+    envVars:
+      - name: LDAP_BIND_PW
+        valueFrom:
+          secretKeyRef:
+            name: dex-secrets
+            key: ldap-bind-password
+      - name: KUBERNETES_CLIENT_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: dex-secrets
+            key: kubernetes-client-secret
+
+    volumes:
+      - name: ldap-ca
+        secret:
+          secretName: ldap-ca-cert
+
+    volumeMounts:
+      - name: ldap-ca
+        mountPath: /etc/dex/ldap-ca
