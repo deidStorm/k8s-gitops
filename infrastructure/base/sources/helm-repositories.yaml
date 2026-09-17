@@ -51,3 +51,12 @@ metadata:
 spec:
   interval: 24h
   url: https://charts.external-secrets.io
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: dex
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://charts.dexidp.io

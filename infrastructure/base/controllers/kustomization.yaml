@@ -8,3 +8,4 @@ resources:
   - local-path-provisioner
   - hashicorp-vault
   - external-secrets
+  - dex
